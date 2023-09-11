@@ -1,37 +1,71 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./styles.css";
 
 export default function AddFarmer() {
-    const [fname, setFname] = useState("");
-    const [lname, setLname] = useState("");
-    const [dob, setDOB] = useState("");
-    const [nic, setNic] = useState("");
-    const [gender, setGender] = useState("");
-    
-    // Uncomment these lines if you intend to use them
-    // const [address, setAddress] = useState("");
-    
-    /* Newly added variables */
-    const [no, setNo] = useState("");
-    const [street2, setStreet2] = useState("");
-    const [district, setDistrict] = useState("");
-    const [province, setProvince] = useState("");
-    const [phone, setPhone] = useState("");
-    const [landOwnerName, setLandOwnerName] = useState("");
-    // const [deedNo, setDeedNo] = useState("");
-    const [districtCode, setDistrictCode] = useState("");
-    const [devisionCode, setDivisionCode] = useState("");
-    const [blockNo, setBlockNumber] = useState("");
-    const [feildSize, setSize] = useState("");
-    const [MPACode, setMpaCode] = useState("");
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [dob, setDOB] = useState("");
+  const [nic, setNic] = useState("");
+  const [gender, setGender] = useState("");
+  
+  // Uncomment these lines if you intend to use them
+  // const [address, setAddress] = useState("");
+  
+  /* Newly added variables */
+  const [no, setNo] = useState("");
+  const [street2, setStreet2] = useState("");
+  const [district, setDistrict] = useState("");
+  const [province, setProvince] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [landOwnerName, setLandOwnerName] = useState("");
+  // const [deedNo, setDeedNo] = useState("");
+  const [districtCode, setDistrictCode] = useState("");
+  const [devisionCode, setDivisionCode] = useState("");
+  const [blockNo, setBlockNumber] = useState("");
+  const [feildSize, setSize] = useState("");
+  const [MPACode, setMpaCode] = useState("");
 
-    
-    function sendData(e) {
+  function sendData(e) {
+    e.preventDefault();
 
-        e.preventDefault();
-        alert("Insert");
+    const newFarmer = {
+        fname,
+        lname,
+        nic,
+        no,
+        street2,
+        district,
+        province,
+        phone,
+        password, // Plain text password from the request
+        landOwnerName,
+        districtCode,
+        devisionCode,
+        blockNo,
+        feildSize,
+        MPACode
+    };
+
+    axios
+      .post("http://localhost:8070/farmer/add", newFarmer)
+      .then((response) => {
+        if (response.status === 200) {
+          alert("Farmer added successfully");
+          // You can also reset the form fields here if needed
+        } else {
+          alert("Failed to add farmer. Status code: " + response.status);
         }
-
+      })
+      .catch((error) => {
+        if (error.response) {
+          alert("Failed to add farmer. Server returned an error: " + error.response.data);
+        } else {
+          alert("Failed to add farmer. Error: " + error.message);
+        }
+      });
+  }
    
         return (
      
@@ -138,19 +172,19 @@ export default function AddFarmer() {
         
                             }} />
                         </div>
-        
-                       {/*
+        */
+                       
                         <div class="input-group">
-                            <label for="address">Address</label>
-                            <textarea id="address" name="address" required onChange = {(e)=> {
+                            <label for="password">pasword</label>
+                            <textarea id="password" name="password" required onChange = {(e)=> {
         
-                                setAddress(e.target.value);
+                                setPassword(e.target.value);
         
                             }} >
                             </textarea>
                         </div>
                         
-                        */}
+                        
         
                         {/*new code for address*/}
         

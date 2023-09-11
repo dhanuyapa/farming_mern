@@ -4,8 +4,10 @@ let Farmer = require("../models/Farmer");
 const bcrypt = require('bcrypt');
 
 
+
 router.route('/login').post(async (req, res) => {
     try {
+       
         const { phone, password } = req.body;
         console.log('Received phone:', phone);
 
