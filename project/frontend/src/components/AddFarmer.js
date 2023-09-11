@@ -13,7 +13,7 @@ export default function AddFarmer() {
     
     /* Newly added variables */
     const [no, setNo] = useState("");
-    const [street2, setStreet] = useState("");
+    const [street2, setStreet2] = useState("");
     const [district, setDistrict] = useState("");
     const [province, setProvince] = useState("");
     const [phone, setPhone] = useState("");
@@ -29,27 +29,8 @@ export default function AddFarmer() {
     function sendData(e) {
 
         e.preventDefault();
-        
-        const newCustomer = {
-            fname,
-            lname,
-            dob,
-            nic,
-            gender,
-            //address,
-            no,
-            street2,
-            district,
-            province,
-            phone,
-            landOwnerName,
-            //deedNo,
-            districtCode,
-            devisionCode,
-            blockNo,
-            feildSize,
-            MPACode
-        }}
+        alert("Insert");
+        }
 
    
         return (
@@ -239,7 +220,7 @@ export default function AddFarmer() {
                                     if (input.length > 50) {
                                         input = input.slice(0, 50);
                                     }
-                                    setStreet(input);
+                                    setStreet2(input);
                                 }}
                                 onKeyPress={(e) => {
                                     const charCode = e.charCode;
