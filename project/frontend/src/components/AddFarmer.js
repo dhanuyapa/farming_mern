@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./styles.css";
+import { useNavigate } from 'react-router-dom';
 
 export default function AddFarmer() {
   const [fname, setFname] = useState("");
@@ -26,6 +27,7 @@ export default function AddFarmer() {
   const [blockNo, setBlockNumber] = useState("");
   const [feildSize, setSize] = useState("");
   const [MPACode, setMpaCode] = useState("");
+  const navigate = useNavigate();
 
   function sendData(e) {
     e.preventDefault();
@@ -53,6 +55,9 @@ export default function AddFarmer() {
       .then((response) => {
         if (response.status === 200) {
           alert("Farmer added successfully");
+          navigate("/login");
+          
+          
           // You can also reset the form fields here if needed
         } else {
           alert("Failed to add farmer. Status code: " + response.status);

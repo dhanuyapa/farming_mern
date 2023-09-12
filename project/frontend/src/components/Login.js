@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+
 function Login() {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
@@ -12,6 +13,7 @@ function Login() {
   useEffect(() => {
     // Check if the user is already logged in (e.g., with a stored token)
     const token = localStorage.getItem('token');
+   
     
   }, [navigate]);
 
@@ -39,17 +41,19 @@ function Login() {
       if (response.status === 200) {
         // Successful login
         const data = response.data;
-        const token = data.token; // Extract the JWT token from the response
+        const token = data.token;
 
         // Store the token in localStorage
         localStorage.setItem('token', token);
 
-       
+        // Navigate to the nested route components/home.js
+        
 
         // Clear form fields and reset state
         setPhone('');
         setPassword('');
         setLoginSuccess(true);
+        navigate('/');
       } else {
         // Handle login errors
         setErrorMessage('Invalid phone number or password');
