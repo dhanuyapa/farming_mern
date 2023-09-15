@@ -47,7 +47,7 @@ function Login() {
         localStorage.setItem('token', token);
 
         // Navigate to the nested route components/home.js
-        navigate('/');
+        navigate('/get/:id');
 
         // Clear form fields and reset state
         setPhone('');
