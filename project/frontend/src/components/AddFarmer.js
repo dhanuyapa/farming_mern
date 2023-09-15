@@ -54,8 +54,9 @@ export default function AddFarmer() {
       .post("http://localhost:8070/farmer/add", newFarmer)
       .then((response) => {
         if (response.status === 200) {
+            navigate("/login");
           alert("Farmer added successfully");
-          navigate("/login");
+          
           
           
           // You can also reset the form fields here if needed

@@ -47,13 +47,12 @@ function Login() {
         localStorage.setItem('token', token);
 
         // Navigate to the nested route components/home.js
-        
+        navigate('/');
 
         // Clear form fields and reset state
         setPhone('');
         setPassword('');
         setLoginSuccess(true);
-        navigate('/');
       } else {
         // Handle login errors
         setErrorMessage('Invalid phone number or password');

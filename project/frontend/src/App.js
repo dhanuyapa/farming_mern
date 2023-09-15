@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/add" element={<AddFarmer />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<home />} /> {/* Add a new route for Home */}
+          <Route path="/" element={<home />} /> 
         </Routes>
       </div>
     </Router>
