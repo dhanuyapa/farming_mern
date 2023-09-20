@@ -1,26 +1,25 @@
-import React from 'react';
-import Header from './components/Header';
-import AddFarmer from './components/AddFarmer';
-import Login from './components/Login';
-import AllFarmers from './components/AllFarmers';
-import userProfile from './components/userProfile';// Change the uppercase 'UserProfile' to lowercase 'userProfile'
-
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
-    return (
-        <Router>
-            <div>
-                <Header />
-                <Routes>
-                    <Route path="/add" element={<AddFarmer />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/get/:id" element={<AllFarmers />} />
-                    <Route path="/userProfile" element={<userProfile />} />
-                </Routes>
-            </div>
-        </Router>
-    );
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
 }
 
 export default App;
