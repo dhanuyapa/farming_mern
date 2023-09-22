@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyPareser = require("body-parser");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express();
@@ -9,25 +9,26 @@ require("dotenv").config();
 const PORT = process.env.PORT || 8070;
 
 app.use(cors());
-app.use(bodyPareser.json());
+app.use(bodyParser.json());
 
 const URL = process.env.MONGODB_URL;
 
 mongoose.connect(URL, {
-    
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    
-});
+    useUnifiedTopology: true
+})
 
 const connection = mongoose.connection;
 connection.once("open", () => {
-    console.log("Mongodb Connection success!");
+    console.log("Mongodb Connection Success!");
 })
-const farmerRouter = require("./routes/farmers.js");
-app.use("/farmer",farmerRouter);
 
+// Include your customer routes here
+const customerRoutes = require('./routes/customers');
+app.use('/customer', customerRoutes); // Mount the customer routes under /customer
 
-app.listen(PORT, () => {
-    console.log(`Server is up and runing on port number: ${PORT}`)
-})
+// Start the server
+const port = process.env.PORT || 8070;
+app.listen(port, () => {
+    console.log(`Server is running on port: ${port}`);
+});

@@ -1,6 +1,8 @@
-const mongoose =  require('mongoose');
-const Scheema = mongoose.Schema;
-const farmerSchema = new Schema({
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const customerSchema = new Schema({
 
     fname : {
         type : String,
@@ -12,27 +14,63 @@ const farmerSchema = new Schema({
         required: true
     },
 
-  
+    username : {
+        type : String,
+        required: true
+    },
+
+    /*
+    dob : {
+        type : String,
+        required: true
+    },
+    */
 
     nic : {
         type : String,
         required: true
     },
 
+    /*
+    gender : {
+        type : String,
+        required: true
+    },
+    */
 
     no : {
         type : String,
         required: true
     },
 
-  
-
-    street2 : {
+    street : {
         type : String,
         required: true
     },
 
-    district : {
+    city : {
+        type : String,
+        required: true
+    },
+
+    phone : {
+        type : String,
+        required: true
+    },
+
+    password : {
+        type : String,
+        required: true
+    },
+
+    /*
+    confirmPassword : {
+        type : String,
+        required: true
+    },
+    */
+
+    landOwnerName : {
         type : String,
         required: true
     },
@@ -42,23 +80,6 @@ const farmerSchema = new Schema({
         required: true
     },
 
-    phone : {
-        type : String,
-        required: true
-    },
-   
-
-    landOwnerName : {
-        type : String,
-        required: true
-    },
-
-    /*
-    deedNo : {
-        type : String,
-        required: true
-    },
-    */
     districtCode : {
         type : String,
         required: true
@@ -79,8 +100,18 @@ const farmerSchema = new Schema({
         required: true
     },
 
+    /*
     MPACode : {
         type : String,
         required: true
     }
+    */
+
+    profileImage: String, 
 })
+
+const Customer = mongoose.model("farmers", customerSchema);
+
+module.exports = Customer;
+
+
