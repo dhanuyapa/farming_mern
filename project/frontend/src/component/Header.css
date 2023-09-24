@@ -1,0 +1,134 @@
+/* Header styles */
+header {
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+  
+  .header-top {
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .header-brand {
+    text-align: center;
+  }
+  
+  .header-brand a {
+    text-decoration: none;
+  }
+  
+  .header-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  /* Navigation styles */
+  .nav-header-bottom ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+  }
+  
+  .nav-header-bottom li {
+    margin-right: 15px;
+    font-size: 20px;
+  }
+  
+  .nav-header-bottom a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .nav-header-bottom a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Search bar styles */
+  .rounded-search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 0 10px;
+    margin-left: auto; /* Push to the right */
+  }
+  
+ /* Search bar styles */
+.rounded-search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 0 10px;
+    margin-left: auto; /* Push the search bar to the right corner */
+    margin-right: 20px; /* Add some right margin to adjust the position */
+  }
+  
+  .rounded-search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 5px;
+    background-color: white;
+    height: 20px;
+    margin-left: 820px;
+}
+
+.rounded-search-bar input[type="text"] {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 20px;
+    width: 300px; 
+}
+
+.rounded-search-bar .search-button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 30px;
+    color: #007BFF;
+    vertical-align: top;
+}
+  /* Button styles */
+  .btn {
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+  }
+  
+  /* Styling for the brand link in the header */
+  .navbar-brand {
+    text-decoration: none;
+  }
+  
+  .navbar-brand:hover {
+    text-decoration: none;
+  }

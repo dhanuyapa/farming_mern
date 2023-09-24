@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Header from './component/Header';
 import AddCustomer from "./component/AddCustomer";
 import AllCustomers from "./component/AllCustomers";
 import Login from "./component/Login";
@@ -11,6 +12,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+      <Header />
         <Routes>
           <Route path="/" element={<AllCustomers />} />
           <Route path="/addCustomer" element={<AddCustomer />} />
