@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AddCustomer from "./component/AddCustomer";
 import AllCustomers from "./component/AllCustomers";
 import Login from "./component/Login";
-import UserProfile from "./component/UserProfile"; // Import the UserProfile component
+import UserProfile from "./component/UserProfile";
+import DeleteAccount from "./component/DeleteAccount";
+import EditUserProfile from "./component/EditUserProfile"; // Updated import
 
 function App() {
   return (
@@ -13,8 +15,10 @@ function App() {
           <Route path="/" element={<AllCustomers />} />
           <Route path="/addCustomer" element={<AddCustomer />} />
           <Route path="/loginCus" element={<Login />} />
-          {/* Add a route for the UserProfile component */}
           <Route path="/getUser/:nic" element={<UserProfile />} />
+          <Route path="/deleteCus/:nic" element={<DeleteAccount />} />
+          {/* Updated route for the EditUserProfile component */}
+          <Route path="/updateCus/:nic" element={<EditUserProfile />} />
         </Routes>
       </div>
     </Router>

@@ -21,6 +21,8 @@ const deletedCustomerSchema = new Schema({
         type: Date,
         default: Date.now,
     },
+}, {
+    collection: 'deletedcustomers2' // Specify the custom collection name here
 });
 
 const DeletedCustomer = mongoose.model('DeletedCustomer', deletedCustomerSchema);
