@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import "./AllCustomer.css";
 export default function AllCustomers() {
   const navigate = useNavigate();
 
@@ -15,10 +15,11 @@ export default function AllCustomers() {
   };
 
   return (
-    <div>
-      <h1>All Customers</h1>
+    <div className="homepage">
+      
+      <div className="button">
       <button onClick={handleViewProfile}>View Profile</button>
-      <Link to="/AddCustomer">Add Customer</Link>
+      </div>
     </div>
   );
 }

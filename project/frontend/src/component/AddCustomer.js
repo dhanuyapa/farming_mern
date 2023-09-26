@@ -89,6 +89,8 @@ export default function AddCustomer() {
         <center><h1>Register</h1></center><br/>
         <form method="POST" onSubmit={sendData}>
             <div class="section">
+            <div class="table">
+               <table>
                 <h4 style={{ color: 'black' }}>Personal Details</h4>
                 
                 <div className="input-group">
@@ -290,6 +292,7 @@ export default function AddCustomer() {
 
                 </div>
 
+</table>
 
 
                 <div className="input-group">
@@ -583,6 +586,7 @@ export default function AddCustomer() {
 
             </div>
             <div class="input-group">
+                </div>
                 <button type="submit">Submit</button>
             </div>
         </form>

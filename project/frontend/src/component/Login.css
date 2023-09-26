@@ -1,0 +1,131 @@
+/* Style for the main container */
+.section {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Style for the table */
+  .table {
+    margin-top: 20px;
+  }
+  
+  /* Style for the table header */
+  .table h4 {
+    color: black;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for input groups */
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  .input-group input[type="text"],
+  .input-group input[type="tel"],
+  .input-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Style for address group */
+  .address-group label {
+    font-weight: bold;
+  }
+  
+  /* Style for password strength indicator */
+  .password-strength {
+    color: red;
+    font-size: 14px;
+  }
+  
+  /* Style for the login container */
+  .login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .login-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .form-group button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Style for success message */
+  .success-message {
+    color: green;
+    font-size: 16px;
+  }
+  
+  /* Style for error message */
+  .error-message {
+    color: red;
+    font-size: 16px;
+  }
+  
+  /* Style for signup message and link */
+  .signup-message {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .signup-link {
+    font-weight: bold;
+    text-decoration: none;
+    color: #007bff;
+    margin-left: 5px;
+  }
+  
+  /* Style for the "All Customers" button */
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }

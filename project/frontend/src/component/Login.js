@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import "./Login.css";
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -104,7 +105,7 @@ function Login() {
               <Link to="/AddCustomer" className="signup-link">
                 Sign up
               </Link>
-              <button onClick={handleAllCustomersClick}>All Customers</button>
+             
             </center>
           </form>
         )}
