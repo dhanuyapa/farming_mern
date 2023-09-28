@@ -273,60 +273,39 @@ router.route("/getUser/:nic").get(async(req,res)=> {
 
 
 //newly registered login route
-
+// New login route that checks for admin credentials
 router.route("/loginCus").post(async (req, res) => {
-    try {
-      const { username, password } = req.body;
-  
-      // Check if the user exists
-      const user = await Customer.findOne({ username });
-  
-      if (!user) {
-        return res.status(401).json({ message: "Invalid username or password" });
-      }
-  
-      // Compare the provided password with the stored hash
-      const validPassword = await bcrypt.compare(password, user.password);
-  
-      if (!validPassword) {
-        return res.status(401).json({ message: "Invalid username or password" });
-      }
-  
-      // Generate and return a JWT token
-      const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
-      res.status(200).json({ message: `${username} login successfully`, nic: user.nic, /*token*/ });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Internal Server Error", error: error.message });
+  try {
+    const { username, password } = req.body;
+
+    // Check if the user is an admin
+    if (username === "11111111" && password === "12345678@") {
+      // Admin login successful
+      const adminToken = jwt.sign({ role: 'admin' }, process.env.JWT_SECRET);
+      return res.status(200).json({ message: "Admin login successful", token: adminToken });
     }
-});
 
-    router.get('/customer/getProfileImage/:nic', (req, res) => {
-    const { nic } = req.params;
-  
-    // Construct the file path based on the NIC
-    const filePath = path.join(__dirname, 'profileImages', `${nic}.jpg`);
-  
-    // Check if the file exists
-    if (fs.existsSync(filePath)) {
-      // If the file exists, send it as a response
-      const imageStream = fs.createReadStream(filePath);
-      imageStream.pipe(res);
-    } else {
-      // If the file does not exist, send the default image
-      const defaultImagePath = path.join(__dirname, 'profileImages', 'default_image.png');
-      const defaultImageStream = fs.createReadStream(defaultImagePath);
+    // For regular users, check the database
+    const user = await Customer.findOne({ username });
 
-      defaultImageStream.on('error', (error) => {
-        // If there's an error reading the default image, you can handle it here
-        console.error('Error reading default image:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-      });
-
-      defaultImageStream.pipe(res);
+    if (!user) {
+      return res.status(401).json({ message: "Invalid username or password" });
     }
-});
 
+    const validPassword = await bcrypt.compare(password, user.password);
+
+    if (!validPassword) {
+      return res.status(401).json({ message: "Invalid username or password" });
+    }
+
+    // Generate and return a JWT token for regular users
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+    res.status(200).json({ message: `${username} login successfully`, nic: user.nic, token });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
+});
 
 /*
     // Update profile image

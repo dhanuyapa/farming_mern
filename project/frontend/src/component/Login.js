@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import "./Login.css";
+import './Login.css';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -39,7 +40,15 @@ function Login() {
           setUsername('');
           setPassword('');
           setLoginSuccess(true);
-          navigate('/');
+
+          // Check if the user is an admin
+          if (username === '11111111' && password === '12345678@') {
+            localStorage.setItem('userRole', 'admin'); // Store "admin" role for admin users
+            navigate('/AdminDashboard'); // Redirect to admin dashboard
+          } else {
+            localStorage.setItem('userRole', 'user'); // Store "user" role for regular users
+            navigate('/AllCustomer'); // Redirect to regular user dashboard
+          }
         } else {
           alert('Invalid username or password');
         }
@@ -66,7 +75,7 @@ function Login() {
         }`}
       >
         <h1>Login</h1>
-        <br></br>
+        <br />
         {loginSuccess ? (
           <p className="success-message">Login successful!</p>
         ) : (
@@ -105,7 +114,6 @@ function Login() {
               <Link to="/AddCustomer" className="signup-link">
                 Sign up
               </Link>
-             
             </center>
           </form>
         )}
