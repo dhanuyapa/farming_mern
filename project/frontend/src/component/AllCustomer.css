@@ -1,45 +1,74 @@
 .homepage {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* Align items to the right edge of the container */
-    padding: 20px;
-    position: relative; /* Create a positioning context for absolute positioning */
-  }
-  
-  .homepage h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .button {
-    position: absolute;
-    top: 10px; /* Adjust the top position to your liking */
-    right: 10px; /* Adjust the right position to your liking */
-  }
-  
-  .button button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .button button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Style for the link */
-  a {
-    text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
-    display: block;
-    margin-top: 10px;
-  }
-  
-  a:hover {
-    color: #0056b3;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Align items to the right edge of the container */
+  padding: 20px;
+  position: relative; /* Create a positioning context for absolute positioning */
+  text-align: center; /* Center align text and images */
+}
+
+/* Style for the h1 element (two-line sentence) */
+h1 {
+  text-align: center;
+  font-size: 36px; 
+  color: #333; 
+  margin: 20px 0; 
+  line-height: 1.5; 
+  word-spacing: 10px;
+  margin-left: 30px;
+  margin-right: 190px;
+  font-family: "Bowlby One";
+  font-weight: bold;
+}
+
+.button {
+  position: absolute;
+  top: 10px; /* Adjust the top position to your liking */
+  right: 10px; /* Adjust the right position to your liking */
+}
+
+.button button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button button:hover {
+  background-color: #0056b3;
+}
+
+/* Style for the link */
+a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+.account-image {
+  width: 50px; /* Adjust the width to your liking */
+  height: auto;
+  position: absolute;
+  top: 10px; /* Adjust the top position to place it in the right upper corner */
+  right: 10px; /* Adjust the right position to place it in the right upper corner */
+  cursor: pointer;
+}
+
+.home-background {
+  width: 550px; /* Adjust the width to make it smaller */
+  height: auto;
+  position: absolute;
+  top: 180%; /* Center the image vertically */
+  left: 50%; /* Center the image horizontally */
+  transform: translate(-50%, -50%); /* Center the image both vertically and horizontally */
+  cursor: pointer;
+}

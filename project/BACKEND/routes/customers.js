@@ -8,32 +8,31 @@ const fs = require("fs");
 let Customer = require("../models/Customer");
 const DeletedCustomer = require('../models/DeletedCustomer');
 
-
 // Configure multer to handle file uploads
 const storage = multer.diskStorage({
-    destination: 'uploads/', // Directory where uploaded images will be stored
-    filename: (req, file, cb) => {
-      cb(null, Date.now() + path.extname(file.originalname)); // Rename uploaded file with a unique name
-    },
-  });
-  
-  const upload = multer({ storage });
-  
-  // Add a route to handle image uploads
-  router.post("/register/uploadProfileImage/:nic", upload.single("profileImage"), async (req, res) => {
-    try {
-      const nic = req.params.nic;
-      const imageUrl = req.file.path; // This should be the URL where the image is stored
-  
-      // Update the profileImage field in the Customer document
-      await Customer.findOneAndUpdate({ nic }, { profileImage: imageUrl });
-  
-      res.json({ imageUrl });
-    } catch (error) {
-      console.error('Error uploading image', error);
-      res.status(500).json({ message: "Internal Server Error" });
-    }
-  });
+  destination: 'uploads/', // Directory where uploaded images will be stored
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); // Rename uploaded file with a unique name
+  },
+});
+
+const upload = multer({ storage });
+
+// Add a route to handle image uploads
+router.post("/register/uploadProfileImage/:nic", upload.single("profileImage"), async (req, res) => {
+  try {
+    const nic = req.params.nic;
+    const imageUrl = req.file.path;
+
+    console.log("Image uploaded successfully:", imageUrl);
+
+    // Respond with the image URL
+    res.json({ imageUrl });
+  } catch (error) {
+    console.error('Error uploading image', error);
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
+});
 
 
 
@@ -355,5 +354,52 @@ router.put("/updateProfileImage/:nic", upload.single("profileImage"), async (req
   }
 });
 
+// Define a route to handle image uploads
+router.post("/register/uploadProfileImage/:nic", upload.single("profileImage"), async (req, res) => {
+  try {
+    const nic = req.params.nic;
+    const imageUrl = req.file.path; // This should be the URL where the image is stored
+
+    // Update the profileImage field in the Customer document
+    await Customer.findOneAndUpdate({ nic }, { profileImage: imageUrl });
+
+    res.json({ imageUrl });
+  } catch (error) {
+    console.error('Error uploading image', error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+// Define a route to remove the profile photo
+router.delete("/removeProfilePhoto/:nic", async (req, res) => {
+  try {
+    const nic = req.params.nic;
+
+    // Step 1: Find the user by NIC
+    const user = await Customer.findOne({ nic });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Step 2: Remove the profile photo URL from the user's record
+    user.profileImage = null; // Set profileImage to null to remove the URL
+
+    // Step 3: Delete the actual image file from the server (assuming you have stored the file path in the user's record)
+    if (user.profileImage) {
+      // Use Node.js fs module to delete the file
+      const filePath = user.profileImage;
+      fs.unlinkSync(filePath); // Delete the file
+    }
+
+    // Step 4: Save the user's updated record
+    await user.save();
+
+    res.status(200).json({ message: "Profile photo removed successfully" });
+  } catch (error) {
+    console.error("Error removing profile photo", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
 
 module.exports = router;

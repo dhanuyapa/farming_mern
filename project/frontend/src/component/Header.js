@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./Header.css";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
- // Replace with your logo image file path
+import "./Header.css";
+
+// Import your account image
+import accountImage from "./images/account.png";
 
 function Header() {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   const handleSearch = () => {
     alert(`Searching for: ${searchQuery}`);
@@ -18,27 +21,40 @@ function Header() {
     }
   };
 
+  // Function to navigate to the UserProfile component, AdminDashboard, or Login component based on login status
+  const handleAccountImageClick = () => {
+    const userNIC = localStorage.getItem("loggedInUserNIC");
+    const isAdmin = localStorage.getItem("userRole") === "admin";
+
+    if (isAdmin) {
+      navigate("/AdminDashboard");
+    } else if (userNIC) {
+      navigate(`/getUser/${userNIC}`);
+    } else {
+      navigate("/loginCus");
+    }
+  };
+
   return (
     <header>
       <div className="header-top">
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="header-container">
             <center>
-            <div className="header-brand">
-              
-              <Link
-                className="navbar-brand"
-                to="/"
-                style={{
-                  color: "black",
-                  fontFamily: "Bowlby One",
-                  fontSize: "60px",
-                  fontWeight: "bold",
-                }}
-              >
-                Green Field Pro
-              </Link>
-            </div>
+              <div className="header-brand">
+                <Link
+                  className="navbar-brand"
+                  to="/"
+                  style={{
+                    color: "black",
+                    fontFamily: "Bowlby One",
+                    fontSize: "60px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Green Field Pro
+                </Link>
+              </div>
             </center>
             <div className="header-buttons">
               <Link className="btn btn-success" to="/AddCustomer">
@@ -47,8 +63,14 @@ function Header() {
               <Link className="btn btn-success" to="/loginCus">
                 Login
               </Link>
-            </div>
-          </div>
+            
+            <img
+              src={accountImage}
+              alt="Account"
+              className="account-image"
+              onClick={handleAccountImageClick}
+            />
+          </div></div>
         </nav>
       </div>
       <div className="header-bottom">
@@ -67,7 +89,7 @@ function Header() {
               <Link
                 className="nav-link"
                 to="/about"
-                style={{ color: "black", fontSize: "20px" }}
+                style={{ color: "black", fontSize: "15px" }}
               >
                 About Us
               </Link>

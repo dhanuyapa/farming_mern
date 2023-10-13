@@ -74,16 +74,17 @@ export default function AddCustomer() {
     return (
         <div className="add-customer-container">
         <div className="flex-container">
-
+{/*
         <div>
             <h2 class="registration-topic">
+            
             Unlock the Future of Paddy Farming 
             <br></br><br></br>
             <span class="special-text">
-            Register and Grow with Us Today !!
+    Register and Grow with Us Today !! *
             </span>
-            </h2>
-        </div>
+    </h2> 
+        </div>*/}
 
     <div class="container">
         <center><h1>Register</h1></center><br/>
