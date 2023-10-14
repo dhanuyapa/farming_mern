@@ -53,8 +53,7 @@ a {
 a:hover {
   color: #0056b3;
 }
-
-.account-image {
+.accoun1t-image {
   width: 50px; /* Adjust the width to your liking */
   height: auto;
   position: absolute;
@@ -71,4 +70,23 @@ a:hover {
   left: 50%; /* Center the image horizontally */
   transform: translate(-50%, -50%); /* Center the image both vertically and horizontally */
   cursor: pointer;
+}
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 4fr); /* Three columns in a row */
+  gap: 10px; /* Adjust the gap between photos as needed */
+}
+
+.photo {
+  text-align: center;
+}
+
+.crop {
+  max-width: 100%; /* Limit the maximum width */
+  max-height: 200px; /* Increase the maximum height for larger images */
+}
+
+.image-button {
+  width: 50%;
+  max-height: 30px; /* Set a fixed or smaller height for the buttons */
 }

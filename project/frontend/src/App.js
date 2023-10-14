@@ -9,6 +9,7 @@ import DeleteAccount from './component/DeleteAccount';
 import EditUserProfile from './component/EditUserProfile';
 import AdminDashboard from './component/AdminDashboard'; // Corrected import
 
+
 function App() {
   return (
     <Router>
@@ -22,6 +23,8 @@ function App() {
           <Route path="/getUser/:nic" element={<UserProfile />} />
           <Route path="/deleteCus/:nic" element={<DeleteAccount />} />
           <Route path="/updateCus/:nic" element={<EditUserProfile />} />
+        
+          
          
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>

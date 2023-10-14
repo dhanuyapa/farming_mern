@@ -2,24 +2,43 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function AdminDashboard() {
+  const [searchQuery, setSearchQuery] = useState('');
   const [userDetails, setUserDetails] = useState([]);
+  const [filteredUserDetails, setFilteredUserDetails] = useState([]);
 
   useEffect(() => {
     // Fetch user details from the backend when the component mounts
     axios
-      .get("http://localhost:8070/Customer/fetch") // Replace with your backend API endpoint
+      .get('http://localhost:8070/Customer/fetch')
       .then((response) => {
-        // Update the state with fetched data
         setUserDetails(response.data);
+        setFilteredUserDetails(response.data); // Initialize filtered data with all users
       })
       .catch((error) => {
         console.error('Error fetching user details', error);
       });
   }, []);
 
+  const handleSearch = () => {
+    // Filter users based on the search query
+    const filteredUsers = userDetails.filter((user) =>
+      user.nic.includes(searchQuery)
+    );
+    setFilteredUserDetails(filteredUsers);
+  };
+
   return (
     <div>
       <h1>User Details</h1>
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Search by NIC"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button onClick={handleSearch}>Search</button>
+      </div>
       <table>
         <thead>
           <tr>
@@ -33,7 +52,7 @@ function AdminDashboard() {
           </tr>
         </thead>
         <tbody>
-          {userDetails.map((user) => (
+          {filteredUserDetails.map((user) => (
             <tr key={user._id}>
               <td>{user.username}</td>
               <td>{user.nic}</td>

@@ -18,6 +18,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+
+
 // Add a route to handle image uploads
 router.post("/register/uploadProfileImage/:nic", upload.single("profileImage"), async (req, res) => {
   try {
@@ -401,5 +403,34 @@ router.delete("/removeProfilePhoto/:nic", async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
+
+function checkAdmin(req, res, next) {
+  // You may implement your own logic to check for admin privileges here
+  const isAdmin = req.user && req.user.role === 'admin';
+  if (!isAdmin) {
+    return res.status(403).json({ message: 'Access denied. You must be an admin.' });
+  }
+  next();
+}
+
+// Add the admin check middleware before the search route
+router.get("/searchByNIC/:nic", checkAdmin, async (req, res) => {
+  try {
+    const { nic } = req.params;
+
+    // Query the database to find the customer by NIC
+    const customer = await Customer.findOne({ nic });
+
+    if (!customer) {
+      return res.status(404).json({ message: "Customer not found" });
+    }
+
+    res.status(200).json({ message: "Customer data found", customer });
+  } catch (error) {
+    console.error("Error searching for customer by NIC", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 
 module.exports = router;
