@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './css/Admin.css'; // Import the external CSS file
 
 function AdminDashboard() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -48,7 +49,7 @@ function AdminDashboard() {
         <button onClick={handleSearch}>Search</button>
       </div>
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>} {/* Display error message */}
-      {filteredUserDetails.length > 0 && ( // Render the table only if there are matching users
+      {filteredUserDetails.length > 0 && (
         <table>
           <thead>
             <tr>
