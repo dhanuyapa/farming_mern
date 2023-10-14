@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import './UserProfile.css';
+import './css/UserProfile.css';
 
 function UserProfile() {
   const loggedInUserNIC = localStorage.getItem('loggedInUserNIC');

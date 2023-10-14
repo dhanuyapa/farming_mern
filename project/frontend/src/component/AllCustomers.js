@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './AllCustomer.css';
+import './css/AllCustomer.css';
 import crop1 from "./images/crop.jpeg";
 import fertilizer from "./images/fertilizer.jpeg";
 import machine from "./images/machine.jpg";

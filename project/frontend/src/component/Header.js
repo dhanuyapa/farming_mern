@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import "./Header.css";
+import "./css/Header.css";
 
 // Import your account image
 import accountImage from "./images/account.png";
@@ -63,14 +63,14 @@ function Header() {
               <Link className="btn btn-success" to="/loginCus">
                 Login
               </Link>
-            
+            </div>
             <img
               src={accountImage}
               alt="Account"
               className="account-image"
               onClick={handleAccountImageClick}
             />
-          </div></div>
+          </div>
         </nav>
       </div>
       <div className="header-bottom">

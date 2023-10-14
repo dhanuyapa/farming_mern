@@ -29,7 +29,7 @@ header {
   display: flex;
   gap: 20px;
   align-items: center;
-  margin-right: 60px; /* Add a custom right margin */
+  margin-right: -550px; /* Add a custom right margin */
 }
 .account-image{
   display: flex;
